@@ -1,0 +1,34 @@
+name: 'Set Repository Description Action'
+description: 'GitHub Action to set repository''s description.'
+author: 'rtvu'
+
+branding:
+  icon: 'edit'
+  color: 'gray-dark'
+
+inputs:
+  description:
+    description: 'Description of repository'
+    required: true
+  repository:
+    description: "Name of repository with format <OWNER>/<REPOSITORY>"
+    required: true
+  token:
+    description: "GitHub token"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    -
+      name: Set description
+      shell: bash
+      run: |
+        gh api \
+          --method PATCH \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          /repos/${{ inputs.repository }} \
+          -f description="${{ inputs.description }}"
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
