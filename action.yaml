@@ -11,17 +11,17 @@ inputs:
     description: 'Description of repository'
     required: true
   repository:
-    description: "Name of repository with format <OWNER>/<REPOSITORY>"
+    description: 'Name of repository with format <OWNER>/<REPOSITORY>'
     required: true
   token:
-    description: "GitHub token"
+    description: 'GitHub token'
     required: true
 
 runs:
   using: 'composite'
   steps:
     -
-      name: Set description
+      name: 'Set description'
       shell: bash
       run: |
         gh api \
