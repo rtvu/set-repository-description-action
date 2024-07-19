@@ -20,4 +20,4 @@ with:
 | `repository`  | Name of repository with format `<OWNER>/<REPOSITORY>` | `${{ github.repository }}` |
 | `token`       | GitHub token[^1]                                      |                            |
 
-[^1]: Cannot use `GITHUB_TOKEN`. Does not have proper permissions.
+[^1]: Cannot use `GITHUB_TOKEN`. Token requires permission: `administration=write`
