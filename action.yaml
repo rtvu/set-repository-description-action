@@ -12,7 +12,7 @@ inputs:
     required: true
   repository:
     description: 'Name of repository with format <OWNER>/<REPOSITORY>'
-    required: true
+    default: ${{ github.repository }}
   token:
     description: 'GitHub token'
     required: true
