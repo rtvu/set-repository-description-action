@@ -6,17 +6,18 @@ GitHub Action to set repository's description.
 
 ``` yaml
 name: 'Set repository description'
-uses: rtvu/set-repository-description-action@v1.0.1
+uses: rtvu/set-repository-description-action@v1
 with:
   description: 'Description of repository'
-  repository: ${{ github.repository }}
-  token: ${{ secrets.REPOSITORY_PAT }}
+  token: ${{ secrets.REPOSITORY_TOKEN}}
 ```
 
 ## Inputs
 
-| Name          | Description                                         | Required |
-| ------------- | --------------------------------------------------- | -------- |
-| `description` | Description of repository                           | `true`   |
-| `repository`  | Name of repository with format <OWNER>/<REPOSITORY> | `true`   |
-| `token`       | GitHub token                                        | `true`   |
+| Name          | Description                                           | Default                    |
+| ------------- | ----------------------------------------------------- | -------------------------- |
+| `description` | Description of repository                             |                            |
+| `repository`  | Name of repository with format `<OWNER>/<REPOSITORY>` | `${{ github.repository }}` |
+| `token`       | GitHub token[^1]                                      |                            |
+
+[^1]: Cannot use `GITHUB_TOKEN`. Does not have proper permissions.
