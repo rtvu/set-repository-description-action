@@ -23,12 +23,6 @@ runs:
     -
       name: 'Set description'
       shell: bash
-      run: |
-        gh api \
-          --method PATCH \
-          -H "Accept: application/vnd.github+json" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          /repos/${{ inputs.repository }} \
-          -f description="${{ inputs.description }}"
+      run: gh repo edit ${{ inputs.repository }} --description "${{ inputs.description }}"
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
